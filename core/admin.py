@@ -1,4 +1,5 @@
 from django.contrib import admin
-from core.models import Person
+from core.models import *
 
-admin.site.register(Person)
+admin.site.register(Employee)
+admin.site.register(Entity)

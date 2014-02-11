@@ -98,6 +98,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+    'multitenant.middleware.ThreadLocals',
 )
 
 ROOT_URLCONF = 'sme.urls'
@@ -115,10 +116,9 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'core', 
-    # Uncomment the next line to enable the admin:
+    'core',
+    'multitenant',     
     'django.contrib.admin',
-    # Uncomment the next line to enable admin documentation:
     'django.contrib.admindocs',
 )
 
@@ -144,3 +144,5 @@ LOGGING = {
         },
     }
 }
+
+AUTH_PROFILE_MODULE = 'core.Employee'
