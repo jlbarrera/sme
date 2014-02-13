@@ -19,17 +19,34 @@ class Person(TenantModel):
     class Meta:
         abstract = True
 
+class Company(TenantModel):
+    name = models.CharField(max_length=200)
+    code = models.CharField(max_length=200)
+    address = models.CharField(max_length=200)
+    city = models.CharField(max_length=200)
+    province = models.CharField(max_length=200)
+    postal_code = models.IntegerField()
+    telephone = models.IntegerField()
+    email = models.EmailField()
+
 class Employee(Person):
     user = models.OneToOneField(User)
     type = models.CharField(max_length=200)
     paysheet = models.FloatField()
     company_cost = models.FloatField()
+    company = models.ForeignKey(Company)
 
 class Customer(Person):
     notes = models.CharField(max_length=8000)
 
 class External(Person):
     assigment = models.FloatField()
+
+class Entity(TenantModel):
+    name = models.CharField(max_length=200)
+    description = models.CharField(max_length=200)
+    price = models.IntegerField()
+    created = models.DateTimeField()
     
 class CashFlow(TenantModel):
     amount = models.IntegerField()
@@ -39,28 +56,23 @@ class CashFlow(TenantModel):
     description = models.CharField(max_length=200)
     customized_amount = models.BooleanField()
     paid = models.BooleanField()
- 
+
+class Sale(CashFlow):        
+    customer = models.ForeignKey(Customer)
+    external = models.ForeignKey(External)
+
 class Discount(TenantModel):
     percentage = models.IntegerField()
+    sale = models.ForeignKey(Sale)
+    entity = models.ForeignKey(Entity)
 
 class Number(TenantModel):
     number = models.IntegerField()
-
-class Sale(CashFlow):        
-    discount = models.OneToOneField (Discount)
-    number = models.OneToOneField (Number)
-       
+    sale = models.ForeignKey(Sale)
+    entity = models.ForeignKey(Entity)
+      
 class Outlay(CashFlow):
     dateofpaid = models.DateField()
     
-class Entity(TenantModel):
-    name = models.CharField(max_length=200)
-    
-    class Meta:
-        abstract = True
-
-class Company(TenantModel):
-    name = models.CharField(max_length=200)
-
 class Categoty(TenantModel):
     name = models.CharField(max_length=200)
