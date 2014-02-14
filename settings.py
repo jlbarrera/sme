@@ -1,5 +1,7 @@
 # Django settings for sme project.
 
+from django.utils.translation import ugettext_lazy as _
+
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
@@ -98,6 +100,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'multitenant.middleware.ThreadLocals',
 )
 
@@ -146,3 +149,12 @@ LOGGING = {
 }
 
 AUTH_PROFILE_MODULE = 'core.Employee'
+
+LANGUAGES = (
+  ('es', _('Spanish')),
+  ('en', _('English')),
+)
+
+LOCALE_PATHS = (
+    'locale',
+)

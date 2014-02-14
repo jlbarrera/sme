@@ -1,6 +1,12 @@
 from django.db import models
 from django.contrib.auth.models import User
 from multitenant.models import TenantModel
+from django.utils.translation import ugettext_lazy as _
+
+GENDER = (
+        ('M', _("Male")),        
+        ('F', _("Female"))
+    )
 
 class Person(TenantModel):
     name = models.CharField(max_length=200)
@@ -13,7 +19,7 @@ class Person(TenantModel):
     postal_code = models.IntegerField(blank=True)
     city = models.CharField(max_length=200, blank=True)
     province = models.CharField(max_length=200, blank=True)
-    gender = models.CharField(max_length=200, blank=True)
+    gender = models.CharField(max_length=200, blank=True, choices=GENDER)
     born = models.DateField(blank=True)
     
     class Meta:
