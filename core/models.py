@@ -9,7 +9,7 @@ GENDER = (
     )
 
 class Person(TenantModel):
-    name = models.CharField(max_length=200)
+    name = models.CharField(max_length=200, unique = True)
     passport = models.CharField(max_length=200, blank=True)        
     surname = models.CharField(max_length=200, blank=True)
     mobile = models.IntegerField(blank=True)
@@ -26,7 +26,7 @@ class Person(TenantModel):
         abstract = True
 
 class Company(TenantModel):
-    name = models.CharField(max_length=200)
+    name = models.CharField(max_length=200)    
     code = models.CharField(max_length=200, blank=True)
     address = models.CharField(max_length=200, blank=True)
     city = models.CharField(max_length=200, blank=True)
@@ -40,7 +40,7 @@ class Employee(Person):
     paysheet = models.FloatField(blank=True)
     company_cost = models.FloatField(blank=True)    
     user = models.OneToOneField(User)
-    company = models.ForeignKey(Company)
+    company = models.ForeignKey(Company, blank=True)
 
 class Customer(Person):
     notes = models.CharField(max_length=8000, blank=True)

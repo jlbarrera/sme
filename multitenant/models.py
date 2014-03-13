@@ -49,7 +49,7 @@ class Tenant(models.Model):
         max_length = 255,
         unique = True,
     )
-    email = models.EmailField()
+        
     def __unicode__(self):
         return self.name
 
