@@ -1,8 +1,10 @@
+{% extends "core/base.html" %}
+{% load i18n %}
 {% block content %}
-    <h2>Employees</h2>
+    <h2>{% trans "Employees" %}</h2>
     <ul>
         {% for employee in object_list %}
             <li>{{ employee.name }}</li>
         {% endfor %}
-    </ul>
+    </ul>    
 {% endblock %}

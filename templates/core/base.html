@@ -1,0 +1,4 @@
+{% load i18n %}
+{% get_language_info for "es" as lang %}
+Language: {{ lang.code }}<br />
+{% block content %}{% endblock %}

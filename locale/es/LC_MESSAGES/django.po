@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-02-14 19:08+0100\n"
+"POT-Creation-Date: 2014-03-13 22:17+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,11 +17,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
-#: .\settings.py:154
+#: .\settings.py:157
 msgid "Spanish"
 msgstr ""
 
-#: .\settings.py:155
+#: .\settings.py:158
 msgid "English"
 msgstr ""
 
@@ -32,3 +32,7 @@ msgstr "Masculino"
 #: .\core\models.py:8
 msgid "Female"
 msgstr "Femenino"
+
+#: .\templates\core\employee_list.html.py:4
+msgid "Employees"
+msgstr "Empleados"
