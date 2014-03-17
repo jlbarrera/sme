@@ -1,4 +1,4 @@
-from django.conf.urls.defaults import patterns, include, url
+from django.conf.urls import patterns, include, url
 from core.views.Employee import *
 
 # Uncomment the next two lines to enable the admin:
@@ -17,6 +17,7 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^employees/$', EmployeeList.as_view()),
     url(r'employees/add/$', EmployeeCreate.as_view(), name='employee_add'),
-    url(r'employees/(?P<pk>\d+)/$', EmployeeUpdate.as_view(), name='employee_update'),
+    url(r'employees/(?P<pk>\d+)/$', EmployeeDetail.as_view(), name='employee_detail'),
+    url(r'employees/(?P<pk>\d+)/edit/$', EmployeeUpdate.as_view(), name='employee_update'),
     url(r'employees/(?P<pk>\d+)/delete/$', EmployeeDelete.as_view(), name='employee_delete'),
 )
