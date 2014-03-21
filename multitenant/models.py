@@ -56,7 +56,7 @@ class Tenant(models.Model):
 
 class TenantModel(models.Model):
     tenant = models.ForeignKey(Tenant)
-    content_tenant_id = models.IntegerField()
+    #content_tenant_id = models.IntegerField()
     
     # Django gives special treatment to the first Manager declared within a Model; it becomes the default manager.
     # There are some corner cases when you don't want the tenant-aware manager to be the default one, for example

@@ -11,11 +11,15 @@ class EmployeeDetail(DetailView):
     
 class EmployeeCreate(CreateView):
     model = Employee
-    fields = ['name']
+    fields = ['name', 'email']
+    
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super(EmployeeCreate, self).form_valid(form)
 
 class EmployeeUpdate(UpdateView):
     model = Employee
-    fields = ['name']
+    fields = ['name', 'email']
 
 class EmployeeDelete(DeleteView):
     model = Employee
