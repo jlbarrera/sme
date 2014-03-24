@@ -103,7 +103,8 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.locale.LocaleMiddleware',
-    'multitenant.middleware.ThreadLocals',
+    'core.middleware.LoginRequiredMiddleware',
+    'multitenant.middleware.ThreadLocals',    
 )
 
 ROOT_URLCONF = 'sme.urls'
@@ -138,3 +139,5 @@ LANGUAGES = (
 LOCALE_PATHS = (
     'locale',
 )
+
+LOGIN_EXEMPT_URLS = ('create-user','login')

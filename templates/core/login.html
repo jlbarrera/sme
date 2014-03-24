@@ -1,0 +1,20 @@
+{% extends "core/base.html" %}
+{% load i18n %}
+{% block content %}	
+ <form action="/login/" method="post">{% csrf_token %}	
+	<div>
+		<div>{% trans "Username" %}</div>
+		<input type="text" name="username"/>
+	</div>
+	<div>	
+	    <div>{% trans "Password" %}</div>	
+		<input type="password" name="password"/>
+	</div>
+	
+	<input type="hidden" name="next" value="{{next}}" />	
+	
+	<div>
+		<input type="submit" value="Entrar"/>		
+	</div>
+</form>
+{% endblock %}

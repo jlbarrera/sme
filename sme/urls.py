@@ -16,8 +16,13 @@ urlpatterns = patterns('',
     # Uncomment the next line to enable the admin:
     url(r'^admin/', include(admin.site.urls)),
     url(r'^employees/$', EmployeeList.as_view()),
-    url(r'employees/add/$', EmployeeCreate.as_view(), name='employee_add'),
-    url(r'employees/(?P<pk>\d+)/$', EmployeeDetail.as_view(), name='employee_detail'),
-    url(r'employees/(?P<pk>\d+)/edit/$', EmployeeUpdate.as_view(), name='employee_update'),
-    url(r'employees/(?P<pk>\d+)/delete/$', EmployeeDelete.as_view(), name='employee_delete'),
+    url(r'^employees/add/$', EmployeeCreate.as_view(), name='employee_add'),
+    url(r'^employees/(?P<pk>\d+)/$', EmployeeDetail.as_view(), name='employee_detail'),
+    url(r'^employees/(?P<pk>\d+)/edit/$', EmployeeUpdate.as_view(), name='employee_update'),
+    url(r'^employees/(?P<pk>\d+)/delete/$', EmployeeDelete.as_view(), name='employee_delete'),
+    
+    url(r'^login-failed/$', EmployeeDelete.as_view(), name='login-failed'),
+    url(r'^account-disabled/$', EmployeeDelete.as_view(), name='account-disabled'),
+    
+    url(r'^login/$', 'core.views.auth.login_view', name='login'),
 )
