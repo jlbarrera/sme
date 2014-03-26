@@ -140,4 +140,4 @@ LOCALE_PATHS = (
     'locale',
 )
 
-LOGIN_EXEMPT_URLS = ('create-user','login')
+LOGIN_EXEMPT_URLS = ('create-user','login', 'admin')

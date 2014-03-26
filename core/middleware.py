@@ -9,11 +9,10 @@ class LoginRequiredMiddleware(object):
             EXEMPT_URLS = [expr for expr in settings.LOGIN_EXEMPT_URLS]
             
         assert hasattr(request, 'user')
-        path = request.path_info.lstrip('/')
+        path = request.path_info.strip('/')
         
-        for url in EXEMPT_URLS:        
-            if path.find(url)>=0:                        
-                return
+        if path in EXEMPT_URLS:
+            return
             
         if not request.user.is_authenticated():            
             return redirect('/login?next=%s' % request.path)

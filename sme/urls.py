@@ -25,4 +25,6 @@ urlpatterns = patterns('',
     url(r'^account-disabled/$', EmployeeDelete.as_view(), name='account-disabled'),
     
     url(r'^login/$', 'core.views.auth.login_view', name='login'),
+    url(r'^logout/$', 'core.views.auth.logout_view', name='logout'),
+    url(r'^create-user/$', 'core.views.auth.createUser_view', name='create-user'),
 )
