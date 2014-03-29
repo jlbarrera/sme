@@ -1,20 +1,35 @@
 {% extends "core/base.html" %}
 {% load i18n %}
-{% block content %}	
- <form action="/login/" method="post">{% csrf_token %}	
-	<div>
-		<div>{% trans "Username" %}</div>
-		<input type="text" name="username"/>
+{% block nav %}{% endblock %}
+{% block section %}
+
+<div class="row">
+  <div class="col-md-4"></div>
+  
+  <div class="col-md-4">
+	<div class="panel panel-default">
+	  <div class="panel-body">
+	  	<form action="/login/" method="post">{% csrf_token %}
+	  	
+	  		<div class="form-group"> 
+	  			<label for="usernameinput">{% trans "Username" %}</label> 
+	  			<input type="text" id ="usernameinput" class="form-control" name="username" placeholder="{% trans 'Username' %}">
+			</div>
+			
+			<div class="form-group">
+				<label for="passwordinput">{% trans "Password" %}</label>  
+	  			<input type="password" id="passwordinput" class="form-control" name="password" placeholder="{% trans 'Password' %}">
+			</div>	
+				
+			<input type="hidden" name="next" value="{{next}}" />	
+		
+					
+			<button type="submit" class="btn btn-default">{% trans "Submit" %}</button>		
+			
+		</form>
+	  </div>
 	</div>
-	<div>	
-	    <div>{% trans "Password" %}</div>	
-		<input type="password" name="password"/>
-	</div>
-	
-	<input type="hidden" name="next" value="{{next}}" />	
-	
-	<div>
-		<input type="submit" value="Entrar"/>		
-	</div>
-</form>
+  </div>
+  <div class="col-md-4"></div>
+ </div>
 {% endblock %}
