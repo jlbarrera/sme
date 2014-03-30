@@ -25,7 +25,7 @@ def get_current_tenant():
     tenant = getattr(_thread_locals, 'tenant', None)
 
     # tenant may not be set yet, if request user is anonymous, or has no profile,
-    if not tenant:
+    if not tenant:        
         set_tenant_to_default()
     
     return getattr(_thread_locals, 'tenant', None)

@@ -1,22 +1,5 @@
 {% extends "core/base.html" %}
 {% load i18n %}
-{% block actions %}
-	<div class="row">
-		<div class="col-md-8"></div>
-		<div class="col-md-4">			
-			<div class="btn-group">
-  				<button type="button" class="btn btn-default">
-  					<a href="../add"><span class="glyphicon glyphicon-plus"></span></a>
-				</button>
-  				<button type="button" class="btn btn-default">
-  					<a href="edit"><span class="glyphicon glyphicon-pencil"></span></a>
- 				</button>
-  				<button type="button" class="btn btn-default">
-	  				<a href="delete"><span class="glyphicon glyphicon-trash"></span></a>
-  				</button>
-			</div>
-		</div>
-{% endblock %} 
 {% block content %}	
 	<form action="" method="post" role="form">{% csrf_token %}
 		<div class="form-group">

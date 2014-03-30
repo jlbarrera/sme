@@ -24,7 +24,7 @@ urlpatterns = patterns('',
     
     url(r'^$', 'core.views.base.index', name='index'),
     
-    url(r'^employees/$', EmployeeList.as_view()),
+    url(r'^employees/$', EmployeeList.as_view(), name='employees-list'),
     url(r'^employees/add/$', EmployeeCreate.as_view(), name='employee_add'),
     url(r'^employees/(?P<pk>\d+)/$', EmployeeDetail.as_view(), name='employee_detail'),
     url(r'^employees/(?P<pk>\d+)/edit/$', EmployeeUpdate.as_view(), name='employee_update'),
