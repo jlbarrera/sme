@@ -6,3 +6,4 @@ threadsafe: true
 
 handlers:
 - url: .*
+  script: django_bootstrap.py
