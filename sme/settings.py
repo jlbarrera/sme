@@ -143,3 +143,5 @@ LOCALE_PATHS = (
 LOGIN_EXEMPT_URLS = ('create-user','login', 'admin')
 
 SOUTH_TESTS_MIGRATE = False
+
+ROOT_URLCONF = 'sme.urls'
