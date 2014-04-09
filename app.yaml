@@ -1,8 +1,8 @@
 application: django-sme
-runtime: python
+runtime: python27
 version: 1
 api_version: 1
+threadsafe: true
 
 handlers:
 - url: .*
-  script: django_bootstrap.py
