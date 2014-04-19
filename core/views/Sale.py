@@ -4,10 +4,14 @@ from django.core.urlresolvers import reverse_lazy
 from core.models import Sale
 from datetime import date, datetime 
 
-class SaleList(ListView):    
+class SaleList(ListView): 
+       
+    paginate_by = 10
     queryset = Sale.tenant_objects.all().order_by('datetime').reverse()
 
 class SaleToday(ListView):        
+    
+    paginate_by = 10
     
     def get_queryset(self):
         min = str(date.today())+' 00:00:00'    
@@ -28,7 +32,7 @@ class SaleDetail(DetailView):
 class SaleCreate(CreateView):
     model = Sale
     fields = ['customer', 'amount', 'customized_amount', 'paid']
-    success_url = reverse_lazy('sales-list')
+    success_url = reverse_lazy('sales-today')
     
     def form_valid(self, form):
         form.instance.user = self.request.user
@@ -37,9 +41,16 @@ class SaleCreate(CreateView):
 
 class SaleUpdate(UpdateView):
     queryset = Sale.tenant_objects.all()
-    fields = ['customer', 'amount']
-    success_url=reverse_lazy('sales-list')
+    fields = ['customer', 'amount', 'customized_amount', 'paid']
+    success_url=reverse_lazy('sales-today')
 
 class SaleDelete(DeleteView):
     queryset = Sale.tenant_objects.all()
-    success_url = reverse_lazy('sales-list')
+    success_url = reverse_lazy('sales-today')
+
+class SalePay(UpdateView):
+    queryset = Sale.tenant_objects.all()
+    fields = ['paid']    
+    template_name = 'core/sale_pay.html'
+    success_url = reverse_lazy('sales-today')
+    

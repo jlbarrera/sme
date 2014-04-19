@@ -15,4 +15,23 @@
         {% endfor %}
     	</tbody>
     </table>
+    
+        {% if is_paginated %}
+        <ul class="pager">
+            <li class="previous">
+                {% if page_obj.has_previous %}
+                    <a href="?page={{ page_obj.previous_page_number }}">{% trans "previous" %}</a>
+                {% endif %}
+            </li>
+                <span class="page-current">
+                    {% trans "Page" %} {{ page_obj.number }} {% trans "of" %} {{ page_obj.paginator.num_pages }}
+                </span>
+            <li class="next">
+                {% if page_obj.has_next %}
+                    <a href="?page={{ page_obj.next_page_number }}">{% trans "next" %}</a>
+                {% endif %}
+            </li>
+        </ul>
+    {% endif %}
+    
 {% endblock %}   

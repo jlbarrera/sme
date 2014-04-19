@@ -1,7 +1,7 @@
 from django.conf.urls import patterns, include, url
 from core.views.Employee import EmployeeCreate, EmployeeDelete, EmployeeDetail, EmployeeList, EmployeeUpdate
 from core.views.Customer import CustomerCreate, CustomerDelete, CustomerDetail, CustomerList, CustomerUpdate
-from core.views.Sale import SaleCreate, SaleDelete, SaleDetail, SaleList, SaleUpdate, SaleToday
+from core.views.Sale import SaleCreate, SaleDelete, SaleDetail, SaleList, SaleUpdate, SaleToday, SalePay
 
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
@@ -44,5 +44,5 @@ urlpatterns = patterns('',
     url(r'^sales/(?P<pk>\d+)/$', SaleDetail.as_view(), name='sale_detail'),
     url(r'^sales/(?P<pk>\d+)/edit/$', SaleUpdate.as_view(), name='sale_update'),
     url(r'^sales/(?P<pk>\d+)/delete/$', SaleDelete.as_view(), name='sale_delete'),    
-        
+    url(r'^sales/(?P<pk>\d+)/pay/$', SalePay.as_view(), name='sale_pay'),    
 )

@@ -4,7 +4,8 @@ from django.core.urlresolvers import reverse_lazy
 from core.models import Customer
 
 class CustomerList(ListView):    
-    queryset = Customer.tenant_objects.all()
+    queryset = Customer.tenant_objects.all().order_by('id').reverse()
+    paginate_by = 10
 
 class CustomerDetail(DetailView):
     queryset = Customer.tenant_objects.all()
