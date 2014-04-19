@@ -12,6 +12,7 @@ class EmployeeDetail(DetailView):
 class EmployeeCreate(CreateView):
     model = Employee
     fields = ['name', 'email']
+    success_url = reverse_lazy('employees-list')
     
     def form_valid(self, form):
         form.instance.user = self.request.user
@@ -24,4 +25,4 @@ class EmployeeUpdate(UpdateView):
 
 class EmployeeDelete(DeleteView):
     queryset = Employee.tenant_objects.all()
-    success_url = reverse_lazy('employees')
+    success_url = reverse_lazy('employees-list')

@@ -1,5 +1,7 @@
 from django.conf.urls import patterns, include, url
-from core.views.Employee import *
+from core.views.Employee import EmployeeCreate, EmployeeDelete, EmployeeDetail, EmployeeList, EmployeeUpdate
+from core.views.Customer import CustomerCreate, CustomerDelete, CustomerDetail, CustomerList, CustomerUpdate
+from core.views.Sale import SaleCreate, SaleDelete, SaleDetail, SaleList, SaleUpdate, SaleToday
 
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
@@ -29,6 +31,18 @@ urlpatterns = patterns('',
     url(r'^employees/(?P<pk>\d+)/$', EmployeeDetail.as_view(), name='employee_detail'),
     url(r'^employees/(?P<pk>\d+)/edit/$', EmployeeUpdate.as_view(), name='employee_update'),
     url(r'^employees/(?P<pk>\d+)/delete/$', EmployeeDelete.as_view(), name='employee_delete'),
-        
+    
+    url(r'^customers/$', CustomerList.as_view(), name='customers-list'),
+    url(r'^customers/add/$', CustomerCreate.as_view(), name='customer_add'),
+    url(r'^customers/(?P<pk>\d+)/$', CustomerDetail.as_view(), name='customer_detail'),
+    url(r'^customers/(?P<pk>\d+)/edit/$', CustomerUpdate.as_view(), name='customer_update'),
+    url(r'^customers/(?P<pk>\d+)/delete/$', CustomerDelete.as_view(), name='customer_delete'),
+    
+    url(r'^sales/$', SaleList.as_view(), name='sales-list'),
+    url(r'^sales/today$', SaleToday.as_view(), name='sales-today'),
+    url(r'^sales/add/$', SaleCreate.as_view(), name='sale_add'),
+    url(r'^sales/(?P<pk>\d+)/$', SaleDetail.as_view(), name='sale_detail'),
+    url(r'^sales/(?P<pk>\d+)/edit/$', SaleUpdate.as_view(), name='sale_update'),
+    url(r'^sales/(?P<pk>\d+)/delete/$', SaleDelete.as_view(), name='sale_delete'),    
         
 )

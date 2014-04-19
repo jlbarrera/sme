@@ -1,0 +1,32 @@
+{% extends "core/base.html" %}
+{% load i18n %}
+{% block section %}    
+	<div class="page-header">
+	  <h1>{% trans "Sales" %} <small>{% trans "Detail" %}</small></h1>
+	</div>   
+{% endblock %}
+{% block actions %}
+	<div class="row">
+		<div class="col-md-8"></div>
+		<div class="col-md-4">			
+			<div class="btn-group">
+  				<button type="button" class="btn btn-default">
+  					<a href="../add"><span class="glyphicon glyphicon-plus"></span></a>
+				</button>
+  				<button type="button" class="btn btn-default">
+  					<a href="edit"><span class="glyphicon glyphicon-pencil"></span></a>
+ 				</button>
+  				<button type="button" class="btn btn-default">
+	  				<a href="delete"><span class="glyphicon glyphicon-trash"></span></a>
+  				</button>
+			</div>
+		</div>
+{% endblock %}  
+{% block content %}		
+		<dl class="dl-horizontal">
+  			<dt>{% trans "Customer" %}</dt>
+  			<dd>{{ object.customer }}</dd>
+  			<dt>{% trans "Amount" %}</dt>
+  			<dd>{{ object.amount }}</dd>
+		</dl>
+{% endblock %}  

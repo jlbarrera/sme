@@ -8,3 +8,11 @@ class BaseForm(ModelForm):
 class AuthorForm(BaseForm):
     class Meta:
         model = Employee
+
+class CustomerForm(BaseForm):
+    class Meta:
+        model = Customer
+
+class SaleForm(BaseForm):
+    class Meta:
+        model = Sale

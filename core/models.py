@@ -60,6 +60,9 @@ class Employee(Person):
 
 class Customer(Person):
     notes = models.CharField(max_length=8000, blank=True)
+    
+    def __unicode__(self):
+        return '%s %s' % (self.name, self.surname)
 
 class External(Person):
     assigment = models.FloatField()
@@ -81,7 +84,7 @@ class CashFlow(TenantModel):
 
 class Sale(CashFlow):        
     customer = models.ForeignKey(Customer)
-    external = models.ForeignKey(External, blank=True)
+    external = models.ForeignKey(External, blank=True, null=True)
 
 class Discount(TenantModel):
     percentage = models.IntegerField()
