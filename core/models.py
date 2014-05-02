@@ -11,16 +11,16 @@ GENDER = (
 
 class Person(TenantModel):
     name = models.CharField(max_length=200, unique = True)
-    passport = models.CharField(max_length=200, blank=True)        
-    surname = models.CharField(max_length=200, blank=True)
+    passport = models.CharField(max_length=200, null=True, blank=True)        
+    surname = models.CharField(max_length=200, null=True, blank=True)
     mobile = models.IntegerField(blank=True, null=True)
     telephone = models.IntegerField(blank=True, null=True)
     email = models.EmailField(blank=True)
-    address = models.CharField(max_length=200, blank=True)
+    address = models.CharField(max_length=200, null=True, blank=True)
     postal_code = models.IntegerField(blank=True, null=True)
-    city = models.CharField(max_length=200, blank=True)
-    province = models.CharField(max_length=200, blank=True)
-    gender = models.CharField(max_length=200, blank=True, choices=GENDER)
+    city = models.CharField(max_length=200, null=True, blank=True)
+    province = models.CharField(max_length=200, null=True, blank=True)
+    gender = models.CharField(max_length=200, null=True, blank=True, choices=GENDER)
     born = models.DateField(blank=True, null=True)
     
     class Meta:
@@ -59,7 +59,7 @@ class Employee(Person):
     objects = EmployeeManager()
 
 class Customer(Person):
-    notes = models.CharField(max_length=8000, blank=True)
+    notes = models.CharField(max_length=8000, null=True, blank=True)
     
     def __unicode__(self):
         return '%s %s' % (self.name, self.surname)
@@ -68,8 +68,8 @@ class External(Person):
     assigment = models.FloatField()
 
 class Entity(TenantModel):
-    name = models.CharField(max_length=200)
-    description = models.CharField(max_length=200, blank=True)
+    name = models.CharField(max_length=200, null=True, blank=True)
+    description = models.CharField(max_length=200, null=True, blank=True)
     price = models.IntegerField()
     created = models.DateTimeField()
     
@@ -85,16 +85,15 @@ class CashFlow(TenantModel):
 class Sale(CashFlow):        
     customer = models.ForeignKey(Customer)
     external = models.ForeignKey(External, blank=True, null=True)
+    entity = models.ManyToManyField(Entity,null=True,blank=True)
 
 class Discount(TenantModel):
     percentage = models.IntegerField()
     sale = models.ForeignKey(Sale)
-    entity = models.ForeignKey(Entity)    
-
+        
 class Number(TenantModel):
     number = models.IntegerField()
-    sale = models.ForeignKey(Sale)    
-    entity = models.ForeignKey(Entity)
+    sale = models.ForeignKey(Sale)        
       
 class Outlay(CashFlow):
     dateofpaid = models.DateField(blank=True)

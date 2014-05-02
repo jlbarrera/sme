@@ -1,39 +1,24 @@
 {% extends "core/base.html" %}
 {% load i18n %}
-{% block section %}    
-	<div class="page-header">
-	  <h1>{% trans "Sales" %} <small>{% trans "List" %}</small></h1>
-	</div>   
-{% endblock %}
 {% block content %}
 	<table class="table table-hover">
 		<thead>
 			<tr>
-			    <th>#</th>
-				<th>{% trans "Customer" %}</th>				
-				<th>{% trans "Amount" %}</th>
-				<th>{% trans "Date" %}</th>						
+				<th>{% trans "Name" %}</th>
+				<th>{% trans "Price" %}</th>				
 			</tr>
 		</thead>
 		<tbody>
-        {% for sale in object_list %}        	
+        {% for entity in object_list %}
             <tr>
-            	<td>
-            		{% if sale.paid %}
-            			<span class="glyphicon glyphicon-ok">
-            		{% else %}	
-            			<a href="{{ sale.id }}/pay"><span class="glyphicon glyphicon-remove"></a>
-            		{% endif %}
-            	</td>
-            	<td><a href="/customers/{{ sale.customer.id }}">{{ sale.customer }}</a></td>
-            	<td><a href="{{sale.id}}">{{ sale.amount }}</a></td>
-            	<td>{{ sale.datetime }}</td>            	
+            	<td><a href="{{entity.id}}">{{ entity.name }}</a></td>
+            	<td>{{ entity.price }}</td>
             </tr>
         {% endfor %}
     	</tbody>
     </table>
     
-    {% if is_paginated %}
+        {% if is_paginated %}
         <ul class="pager">
             <li class="previous">
                 {% if page_obj.has_previous %}
@@ -50,9 +35,5 @@
             </li>
         </ul>
     {% endif %}
-  
-{% endblock %}
-
-{% block metadata %}
-	{% trans "Total:" %} {{total}}
+    
 {% endblock %}   

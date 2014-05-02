@@ -123,8 +123,9 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'multitenant',
     'core',
-    'multitenant',     
+    'smecal',
     'django.contrib.admin',
     'django.contrib.admindocs',
 )
@@ -145,3 +146,5 @@ LOGIN_EXEMPT_URLS = ('create-user','login', 'admin')
 SOUTH_TESTS_MIGRATE = False
 
 ROOT_URLCONF = 'sme.urls'
+
+DATE_FORMAT = 'd/m/y'

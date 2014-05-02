@@ -7,7 +7,17 @@ from datetime import date, datetime
 class SaleList(ListView): 
        
     paginate_by = 10
-    queryset = Sale.tenant_objects.all().order_by('datetime').reverse()
+
+    def get_queryset(self):
+        return Sale.tenant_objects.all().order_by('datetime').reverse()
+
+    def get_context_data(self, **kwargs):
+        context = super(SaleList, self).get_context_data(**kwargs)                
+        totalday = 0        
+        for sale in self.get_queryset():
+            totalday += sale.amount 
+        context['total'] = totalday        
+        return context
 
 class SaleToday(ListView):        
     
@@ -31,7 +41,7 @@ class SaleDetail(DetailView):
     
 class SaleCreate(CreateView):
     model = Sale
-    fields = ['customer', 'amount', 'customized_amount', 'paid']
+    fields = ['customer', 'amount', 'customized_amount', 'paid', 'entity']
     success_url = reverse_lazy('sales-today')
     
     def form_valid(self, form):
