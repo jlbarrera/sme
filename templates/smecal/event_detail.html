@@ -2,7 +2,7 @@
 {% load i18n %}
 {% block section %}    
 	<div class="page-header">
-	  <h1>{% trans "Sales" %} <small>{% trans "Detail" %}</small></h1>
+	  <h1>{% trans "Event" %} <small>{% trans "Detail" %}</small></h1>
 	</div>   
 {% endblock %}
 {% block actions %}
@@ -24,13 +24,9 @@
 {% endblock %}  
 {% block content %}		
 		<dl class="dl-horizontal">
-  			<dt>{% trans "Customer" %}</dt>
-  			<dd>{{ object.customer }}</dd>
+  			<dt>{% trans "Date" %}</dt>
+  			<dd>{{ object.when }}</dd>
   			<dt>{% trans "Amount" %}</dt>
-  			<dd>{{ object.amount }}</dd>
-  			<dt>{% trans "Entities" %}</dt>
-  			{% for entity in object.entity.all %}
-  			<dd>{{ entity.created }}</dd>
-  			{% endfor %}
+  			<dd>{{ object.price }}</dd>
 		</dl>
 {% endblock %}  

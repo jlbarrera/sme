@@ -2,7 +2,7 @@ from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.core.urlresolvers import reverse_lazy
 from core.models import Sale
-from datetime import date, datetime 
+from datetime import date 
 
 class SaleList(ListView): 
        
@@ -45,13 +45,12 @@ class SaleCreate(CreateView):
     success_url = reverse_lazy('sales-today')
     
     def form_valid(self, form):
-        form.instance.user = self.request.user
-        form.instance.datetime = datetime.now()
+        form.instance.user = self.request.user        
         return super(SaleCreate, self).form_valid(form)
 
 class SaleUpdate(UpdateView):
     queryset = Sale.tenant_objects.all()
-    fields = ['customer', 'amount', 'customized_amount', 'paid']
+    fields = ['customer', 'amount', 'customized_amount', 'paid', 'entity']
     success_url=reverse_lazy('sales-today')
 
 class SaleDelete(DeleteView):

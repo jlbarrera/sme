@@ -71,16 +71,16 @@ class Entity(TenantModel):
     name = models.CharField(max_length=200, null=True, blank=True)
     description = models.CharField(max_length=200, null=True, blank=True)
     price = models.IntegerField()
-    created = models.DateTimeField()
+    created = models.DateTimeField(auto_now=True)
     
 class CashFlow(TenantModel):
     amount = models.IntegerField()
-    datetime = models.DateTimeField()
+    datetime = models.DateTimeField(auto_now=True)
     type = models.CharField(max_length=200)
     paymentform = models.CharField(max_length=200)
     description = models.CharField(max_length=200, blank=True)
     customized_amount = models.BooleanField()
-    paid = models.BooleanField()
+    paid = models.BooleanField()    
 
 class Sale(CashFlow):        
     customer = models.ForeignKey(Customer)
