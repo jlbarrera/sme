@@ -9,7 +9,7 @@
 	<table class="table table-hover">
 		<thead>
 			<tr>
-				<th>{% trans "Status" %}</th>
+				<th>{% trans "#" %}</th>
 				<th>{% trans "Date" %}</th>
 				<th>{% trans "Customer" %}</th>
 				<th>{% trans "Price" %}</th>				
@@ -19,7 +19,15 @@
         {% for entity in object_list %}
             <tr>
             	<td>
-            		{{ entity.status }}            		
+            		{% ifequal entity.status "U" %}
+            			<a href="{{ entity.id }}/pay"><span class="glyphicon glyphicon-euro"></a>
+           			{% endifequal %}
+            		{% ifequal entity.status "C" %}	
+            			<span class="glyphicon glyphicon-remove">            			
+            		{% endifequal %}
+            		{% ifequal entity.status "P" %}	
+            			<span class="glyphicon glyphicon-ok">
+            		{% endifequal %}
             	</td>
             	<td><a href="{{entity.id}}">{{ entity.when }}</a></td>
             	<td><a href="/customers/{{entity.customer.id}}">{{ entity.customer }}</a></td>

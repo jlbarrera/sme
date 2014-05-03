@@ -22,7 +22,7 @@
             		{% if sale.paid %}
             			<span class="glyphicon glyphicon-ok">
             		{% else %}	
-            			<a href="{{ sale.id }}/pay"><span class="glyphicon glyphicon-remove"></a>
+            			<a href="{{ sale.id }}/pay"><span class="glyphicon glyphicon-euro"></a>
             		{% endif %}
             	</td>
             	<td><a href="/customers/{{ sale.customer.id }}">{{ sale.customer }}</a></td>

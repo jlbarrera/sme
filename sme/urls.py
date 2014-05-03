@@ -2,7 +2,7 @@ from django.conf.urls import patterns, include, url
 from core.views.Employee import EmployeeCreate, EmployeeDelete, EmployeeDetail, EmployeeList, EmployeeUpdate
 from core.views.Customer import CustomerCreate, CustomerDelete, CustomerDetail, CustomerList, CustomerUpdate
 from core.views.Sale import SaleCreate, SaleDelete, SaleDetail, SaleList, SaleUpdate, SaleToday, SalePay
-from smecal.views.Event import EventCreate, EventDelete, EventDetail, EventList, EventUpdate, EventToday
+from smecal.views.Event import EventCreate, EventDelete, EventDetail, EventList, EventUpdate, EventToday, EventPay
 
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
@@ -52,5 +52,6 @@ urlpatterns = patterns('',
     url(r'^events/add/$', EventCreate.as_view(), name='event-add'),
     url(r'^events/(?P<pk>\d+)/$', EventDetail.as_view(), name='event-detail'),
     url(r'^events/(?P<pk>\d+)/edit/$', EventUpdate.as_view(), name='event-update'),
-    url(r'^events/(?P<pk>\d+)/delete/$', EventDelete.as_view(), name='event-delete'),   
+    url(r'^events/(?P<pk>\d+)/delete/$', EventDelete.as_view(), name='event-delete'),
+    url(r'^events/(?P<pk>\d+)/pay/$', EventPay.as_view(), name='event-pay'),
 )

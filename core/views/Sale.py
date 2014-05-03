@@ -24,9 +24,9 @@ class SaleToday(ListView):
     paginate_by = 10
     
     def get_queryset(self):
-        min = str(date.today())+' 00:00:00'    
-        max = str(date.today())+' 23:59:59'
-        return Sale.tenant_objects.filter(datetime__gt=min, datetime__lt=max).order_by('datetime').reverse()
+        min_h = str(date.today())+' 00:00:00'    
+        max_h = str(date.today())+' 23:59:59'
+        return Sale.tenant_objects.filter(datetime__gt=min_h, datetime__lt=max_h).order_by('datetime').reverse()
     
     def get_context_data(self, **kwargs):
         context = super(SaleToday, self).get_context_data(**kwargs)                
@@ -62,4 +62,11 @@ class SalePay(UpdateView):
     fields = ['paid']    
     template_name = 'core/sale_pay.html'
     success_url = reverse_lazy('sales-today')
+    
+    def form_valid(self, form):
+        if form.instance.paid:
+            for entity in self.object.entity.all():
+                entity.event.status = 'P'
+                entity.event.save()
+        return super(SalePay, self).form_valid(form)
     
