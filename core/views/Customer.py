@@ -3,12 +3,16 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.core.urlresolvers import reverse_lazy
 from core.models import Customer
 
-class CustomerList(ListView):    
-    queryset = Customer.tenant_objects.all().order_by('id').reverse()
+class CustomerList(ListView):        
     paginate_by = 10
+    
+    def get_queryset(self):
+        return Customer.tenant_objects.all().order_by('id').reverse() 
 
 class CustomerDetail(DetailView):
-    queryset = Customer.tenant_objects.all()
+    
+    def get_queryset(self):
+        return Customer.tenant_objects.all()
     
 class CustomerCreate(CreateView):
     model = Customer
@@ -19,11 +23,15 @@ class CustomerCreate(CreateView):
         form.instance.user = self.request.user
         return super(CustomerCreate, self).form_valid(form)
 
-class CustomerUpdate(UpdateView):
-    queryset = Customer.tenant_objects.all()
+class CustomerUpdate(UpdateView):    
     fields = ['name', 'email']
     success_url = reverse_lazy('customers-list')
+    
+    def get_queryset(self):
+        return Customer.tenant_objects.all()
 
 class CustomerDelete(DeleteView):
-    queryset = Customer.tenant_objects.all()
-    success_url = reverse_lazy('customers-list') 
+    success_url = reverse_lazy('customers-list')
+    
+    def get_queryset(self): 
+        Customer.tenant_objects.all()

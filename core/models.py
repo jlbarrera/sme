@@ -1,8 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User, Group
-from multitenant.models import Tenant, TenantModel
+from multitenant.models import TenantModel
 from django.utils.translation import ugettext_lazy as _
-
+from multitenant.forms import TenantModelForm
 
 GENDER = (
         ('M', _("Male")),        
@@ -35,29 +35,14 @@ class Company(TenantModel):
     postal_code = models.IntegerField(blank=True, null=True)
     telephone = models.IntegerField(blank=True, null=True)
     email = models.EmailField(blank=True)
-
-class EmployeeManager(models.Manager):
-    def create_employee(self, username, password):
-        #Create the user
-        user = User(username=username, password=password)
-        user.save()
-        #Assign default role
-        Group.objects.filter(pk=id)
-        #Create tenant
-        tenant = Tenant(name=username)
-        tenant.save()
-        employee = self.create(name=username, user=user, tenant=tenant)        
-        return employee
-    
+  
 class Employee(Person):    
-    role = models.OneToOneField(Group)
+    role = models.ManyToManyField(Group, blank=True, null=True)    
     paysheet = models.FloatField(blank=True, null=True)
     company_cost = models.FloatField(blank=True, null=True)    
     user = models.OneToOneField(User)
     company = models.ForeignKey(Company, blank=True, null=True)
     
-    objects = EmployeeManager()
-
 class Customer(Person):
     notes = models.CharField(max_length=8000, null=True, blank=True)
     
@@ -72,6 +57,14 @@ class Entity(TenantModel):
     description = models.CharField(max_length=200, null=True, blank=True)
     price = models.IntegerField()
     created = models.DateTimeField(auto_now=True)
+
+class EntityForm(TenantModelForm):
+    class Meta:
+        model = Entity
+        exclude = ['tenant']
+        
+    def __init__(self, *args, **kwargs):
+        super(EntityForm, self).__init__(*args, **kwargs)    
     
 class CashFlow(TenantModel):
     amount = models.IntegerField()

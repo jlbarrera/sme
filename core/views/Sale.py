@@ -37,7 +37,9 @@ class SaleToday(ListView):
         return context
 
 class SaleDetail(DetailView):
-    queryset = Sale.tenant_objects.all()    
+    
+    def get_queryset(self):    
+        return Sale.tenant_objects.all()
     
 class SaleCreate(CreateView):
     model = Sale
@@ -54,19 +56,24 @@ class SaleUpdate(UpdateView):
     success_url=reverse_lazy('sales-today')
 
 class SaleDelete(DeleteView):
-    queryset = Sale.tenant_objects.all()
     success_url = reverse_lazy('sales-today')
+    
+    def get_queryset(self):    
+        return Sale.tenant_objects.all()
 
-class SalePay(UpdateView):
-    queryset = Sale.tenant_objects.all()
+class SalePay(UpdateView):    
     fields = ['paid']    
     template_name = 'core/sale_pay.html'
     success_url = reverse_lazy('sales-today')
     
+    def get_queryset(self):    
+        return Sale.tenant_objects.all()
+    
     def form_valid(self, form):
         if form.instance.paid:
             for entity in self.object.entity.all():
-                entity.event.status = 'P'
-                entity.event.save()
+                if hasattr(entity, 'event'):
+                    entity.event.status = 'P'
+                    entity.event.save()
         return super(SalePay, self).form_valid(form)
     
