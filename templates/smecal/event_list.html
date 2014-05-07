@@ -55,4 +55,33 @@
         </ul>
     {% endif %}
     
+    <h3>{% trans "Events" %} <small>{% trans "Timeline" %}</small></h3>
+    <div class="container" >
+    	<div class="row ">            
+			<div class="col-md-offset-2 col-md-8 col-sm-12 top-margin" >
+				<ul class="timeline">
+				    <li class="time-label">
+				        <span class="bg-orange">{% trans "Today" %}</span>
+				    </li>
+				    {% for entity in object_list %}
+				    <li>
+						<i class="fa fa-envelope bg-blue"></i>
+						<div class="timeline-item">
+							<span class="time"><i class="fa fa-clock-o"></i>{{ entity.when }}</span>
+                            <h3 class="timeline-header"><a href="/customers/{{ entity.customer.id }}">{{entity.customer }}</a>
+                            <div class="timeline-body">
+                                       Sed accumsan venenatis blandit. Duis auctor hendrerit metus
+                            </div>
+                            <div class='timeline-footer'>
+                                <a>{% trans "Pay" %}</a>
+                                <a>{% trans "More" %}</a>
+                            </div>
+						</div>
+					</li>
+					{% endfor %}
+				</ul>
+			</div>
+		</div>
+	</div>
+    
 {% endblock %}   

@@ -27,14 +27,20 @@ class EventDetail(DetailView):
     def get_queryset(self):
         return Event.tenant_objects.all()
     
+    def get_context_data(self, **kwargs):
+        context = super(EventDetail, self).get_context_data(**kwargs)                
+        sale = Sale.tenant_objects.get(entity=self.object)
+        context['sale'] = sale        
+        return context
+    
 class EventCreate(FormView):
     form_class = EventForm
-    template_name = 'smecal/event_form.html'
-    fields = ['when', 'duration', 'status', 'price', 'customer', 'employee']
+    template_name = 'smecal/event_form.html'    
     success_url = reverse_lazy('events-today')    
       
     def form_valid(self, form):
         form.instance.user = self.request.user
+        form.save()
         return super(EventCreate, self).form_valid(form)
 
 class EventUpdate(UpdateView):    

@@ -24,9 +24,11 @@
 {% endblock %}  
 {% block content %}		
 		<dl class="dl-horizontal">
+			<dt>{% trans "Customer" %}</dt>
+  			<dd><a href="/customers/{{ object.customer.id }}">{{ object.customer }}</a></dd>
   			<dt>{% trans "Date" %}</dt>
   			<dd>{{ object.when }}</dd>
   			<dt>{% trans "Amount" %}</dt>
-  			<dd>{{ object.price }}</dd>
+  			<dd><a href="/sales/{{ sale.id }}">{{ sale }}</a></dd>
 		</dl>
 {% endblock %}  

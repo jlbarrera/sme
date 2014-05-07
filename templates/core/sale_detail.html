@@ -25,12 +25,16 @@
 {% block content %}		
 		<dl class="dl-horizontal">
   			<dt>{% trans "Customer" %}</dt>
-  			<dd>{{ object.customer }}</dd>
+  			<dd><a href="/customers/{{ object.customer.id }}">{{ object.customer }}</a></dd>
   			<dt>{% trans "Amount" %}</dt>
   			<dd>{{ object.amount }}</dd>
   			<dt>{% trans "Entities" %}</dt>
   			{% for entity in object.entity.all %}
-  			<dd>{{ entity.created }}</dd>
+  				{% ifnotequal entity.when "" %}
+  					<dd><a href="/events/{{ entity.id }}">{{ entity.created }}</dd>
+  				{% else %}
+  					<dd>{{ entity.created }}</dd>
+  				{% endifnotequal %}
   			{% endfor %}
 		</dl>
 {% endblock %}  

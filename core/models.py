@@ -79,6 +79,9 @@ class Sale(CashFlow):
     customer = models.ForeignKey(Customer)
     external = models.ForeignKey(External, blank=True, null=True)
     entity = models.ManyToManyField(Entity,null=True,blank=True)
+    
+    def __unicode__(self):
+        return '%s' % (self.amount)
 
 class Discount(TenantModel):
     percentage = models.IntegerField()

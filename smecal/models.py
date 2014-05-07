@@ -19,7 +19,7 @@ class Event(Entity):
 class EventForm(TenantModelForm):
     class Meta:
         model = Event
-        exclude = ['tenant']
+        exclude = ['tenant', 'name']
         
     def __init__(self, *args, **kwargs):
         super(EventForm, self).__init__(*args, **kwargs)  
