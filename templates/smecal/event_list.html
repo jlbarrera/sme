@@ -1,4 +1,5 @@
 {% extends "core/base.html" %}
+{% load humanize %}
 {% load i18n %}
 {% block section %}    
 	<div class="page-header">
@@ -58,27 +59,40 @@
     <h3>{% trans "Events" %} <small>{% trans "Timeline" %}</small></h3>
     <div class="container" >
     	<div class="row ">            
-			<div class="col-md-offset-2 col-md-8 col-sm-12 top-margin" >
+			<div class="col-md-8 col-sm-12 top-margin" >
 				<ul class="timeline">
 				    <li class="time-label">
-				        <span class="bg-orange">{% trans "Today" %}</span>
+				        <span class="bg-orange">{% trans "Start" %}</span>
 				    </li>
 				    {% for entity in object_list %}
 				    <li>
 						<i class="fa fa-envelope bg-blue"></i>
 						<div class="timeline-item">
-							<span class="time"><i class="fa fa-clock-o"></i>{{ entity.when }}</span>
+							<span class="time"><i class="fa fa-clock-o"></i>{{ entity.when | naturalday}}</span>
                             <h3 class="timeline-header"><a href="/customers/{{ entity.customer.id }}">{{entity.customer }}</a>
                             <div class="timeline-body">
-                                       Sed accumsan venenatis blandit. Duis auctor hendrerit metus
+                            	<p class="text-info">{% trans "Description" %}</p>
+						  		<p class="text-info">{% trans "Price" %}: {{ entity.price }}</p>
                             </div>
-                            <div class='timeline-footer'>
-                                <a>{% trans "Pay" %}</a>
-                                <a>{% trans "More" %}</a>
-                            </div>
+                            <div class="btn-group timeline-footer">
+                            	{% ifequal entity.status "U" %}
+            					<button type="button" class="btn btn-default">
+            						<a href="{{ entity.id }}/pay">{% trans "Pay" %} {{ entity.price }}</a>
+           						</button>
+           						{% else %}
+           						<button type="button" class="btn btn-default disabled">
+            						<a href="{{ entity.id }}/pay">{% trans "Pay" %}</a>
+           						</button>
+           					  	{% endifequal %}							  	
+							  	<button type="button" class="btn btn-default"><a href="{{entity.id}}">{% trans "Details" %}</a></button>
+							  	<button type="button" class="btn btn-default"><a href="{{entity.id}}/edit">{% trans "Edit" %}</a></button>
+							</div>
 						</div>
 					</li>
 					{% endfor %}
+					 <li>
+                     	<i class="fa fa-clock-o"></i>
+                     </li>
 				</ul>
 			</div>
 		</div>

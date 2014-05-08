@@ -2,9 +2,15 @@
 {% load i18n %}
 {% block content %}	
 	<form action="" method="post" role="form">{% csrf_token %}
+		{% for object in form %}
 		<div class="form-group">
-	    	{{ form.as_p }}
+			<label for="{{object.label}}">{{object.label}}</label>
+			<div class='input-group date' id='{{object.label}}'>
+		 		{{ object }}
+		 		<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
+	 		</div>	    	
 	    </div>
+	    {% endfor %}	
 	    <button type="submit" class="btn btn-default">{% trans "Submit" %}</button>
 	</form>
 {% endblock %} 

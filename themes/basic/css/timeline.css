@@ -70,7 +70,8 @@
   font-weight: 600;
 }
 .timeline > li > .timeline-item > .timeline-body,
-.timeline > li > .timeline-item > .timeline-footer {
+.timeline > li > .timeline-item > .timeline-footer,
+.timeline-body {
   padding: 10px;
 }
 .timeline > li.time-label > span {
