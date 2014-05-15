@@ -44,6 +44,9 @@ class Employee(Person):
     user = models.OneToOneField(User)
     company = models.ForeignKey(Company, blank=True, null=True)
     
+    def __unicode__(self):
+        return '%s %s' % (self.name, self.surname)
+    
 class Customer(Person):
     notes = models.CharField(max_length=8000, null=True, blank=True)
     

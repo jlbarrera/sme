@@ -28,9 +28,10 @@ class EventDetail(DetailView):
         return Event.tenant_objects.all()
     
     def get_context_data(self, **kwargs):
-        context = super(EventDetail, self).get_context_data(**kwargs)                
+        context = super(EventDetail, self).get_context_data(**kwargs)                        
         sale = Sale.tenant_objects.filter(entity=self.object)
-        if len(sale) > 0:
+        if sale:      
+            sale = Sale.tenant_objects.filter(entity=self.object)[0]
             context['sale'] = sale        
         return context
     
@@ -58,14 +59,15 @@ class EventDelete(DeleteView):
     def get_queryset(self):
         return Event.tenant_objects.all()
 
-class EventPay(UpdateView):    
+class EventPay(DetailView):    
     fields = ['status']    
     template_name = 'smecal/event_pay.html'    
 
     def get_queryset(self):
         return Event.tenant_objects.all()
         
-    def form_valid(self, form):  
+    def get(self, request, **kwargs):
+        self.object = self.get_object()
         sale = Sale.tenant_objects.filter(entity=self.object)
         if not sale:      
             sale = Sale(customer=self.object.customer, 

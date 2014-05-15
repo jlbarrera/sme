@@ -101,10 +101,10 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',    
+    'django.contrib.messages.middleware.MessageMiddleware',
+    'django.middleware.locale.LocaleMiddleware',    
     'core.middleware.LoginRequiredMiddleware',
-    'multitenant.middleware.ThreadLocals',
-    'django.middleware.locale.LocaleMiddleware',
+    'multitenant.middleware.ThreadLocals',    
 )
 
 ROOT_URLCONF = 'sme.urls'
@@ -138,8 +138,8 @@ LANGUAGES = (
   ('en', _('English')),
 )
 
-LOCALE_PATHS = (
-    'locale',
+LOCALE_PATHS = (    
+    BASE_DIR+"/../locale/",
 )
 
 LOGIN_EXEMPT_URLS = ('create-user','login', 'admin')

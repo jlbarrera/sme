@@ -4,4 +4,6 @@ $(document).ready(function() {
 		useSeconds: false,
 		format: 'dd/MM/yyyy hh:mm',
 	});
+	
+	$("input,select").addClass('form-control');
 })

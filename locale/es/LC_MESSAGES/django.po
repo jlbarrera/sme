@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-03-13 22:17+0100\n"
+"POT-Creation-Date: 2014-05-16 01:27+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,22 +17,274 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
-#: .\settings.py:157
-msgid "Spanish"
-msgstr ""
-
-#: .\settings.py:158
-msgid "English"
-msgstr ""
-
-#: .\core\models.py:7
+#: .\core\models.py:9
 msgid "Male"
 msgstr "Masculino"
 
-#: .\core\models.py:8
+#: .\core\models.py:10
 msgid "Female"
 msgstr "Femenino"
 
-#: .\templates\core\employee_list.html.py:4
+#: .\core\models.py:73
+msgid "Enter Description"
+msgstr "Introduce descripción"
+
+#: .\core\models.py:74
+msgid "Enter Price"
+msgstr "Introduce precio"
+
+#: .\sme\settings.py:137
+msgid "Spanish"
+msgstr "Español"
+
+#: .\sme\settings.py:138
+msgid "English"
+msgstr "Inglés"
+
+#: .\smecal\models.py:7
+msgid "Paid"
+msgstr "Pagado"
+
+#: .\smecal\models.py:8 .\templates\smecal\event_detail.html:36
+msgid "Unpaid"
+msgstr "No pagado"
+
+#: .\smecal\models.py:9
+msgid "Canceled"
+msgstr "Cancelado"
+
+#: .\smecal\models.py:27
+msgid "Enter DateTime"
+msgstr "Introduce fecha y hora"
+
+#: .\smecal\models.py:27
+#, fuzzy
+msgid "DateTime"
+msgstr "Introduce fecha y hora"
+
+#: .\smecal\models.py:28
+msgid "Enter Duration"
+msgstr "Introduce duración"
+
+#: .\templates\core\base.html:42 .\templates\core\customer_list.html:5
+msgid "Customers"
+msgstr "Clientes"
+
+#: .\templates\core\base.html:44 .\templates\core\base.html.py:68
+#: .\templates\core\base.html:76 .\templates\core\base.html.py:83
+#: .\templates\core\customer_list.html:5 .\templates\core\employee_list.html:5
+#: .\templates\core\sale_list.html:5 .\templates\smecal\event_list.html:6
+msgid "List"
+msgstr "Listado"
+
+#: .\templates\core\base.html:45 .\templates\core\base.html.py:52
+#: .\templates\core\base.html:60 .\templates\core\base.html.py:69
+#: .\templates\core\base.html:77 .\templates\core\base.html.py:84
+#: .\templates\core\sale_form.html:5
+msgid "Add"
+msgstr "Añadir"
+
+#: .\templates\core\base.html:49
+msgid "Calendar"
+msgstr "Calendario"
+
+#: .\templates\core\base.html:51 .\templates\core\base.html.py:59
+msgid "Today"
+msgstr "Hoy"
+
+#: .\templates\core\base.html:53 .\templates\core\base.html.py:62
+msgid "All"
+msgstr "Todo"
+
+#: .\templates\core\base.html:57 .\templates\core\sale_detail.html:5
+#: .\templates\core\sale_form.html:5 .\templates\core\sale_list.html:5
+#: .\templates\core\sale_pay.html:5
+#, fuzzy
+msgid "Sales"
+msgstr "Ventas"
+
+#: .\templates\core\base.html:61
+msgid "cash desk closing"
+msgstr "Cierre de caja"
+
+#: .\templates\core\base.html:66
+msgid "Products"
+msgstr "Productos"
+
+#: .\templates\core\base.html:70
+msgid "Stock"
+msgstr "Stock"
+
+#: .\templates\core\base.html:74
+msgid "Services"
+msgstr "Servicios"
+
+#: .\templates\core\base.html:81
+msgid "Season Ticket"
+msgstr "Bonos"
+
+#: .\templates\core\base.html:85
+msgid "Actives"
+msgstr "Activos"
+
+#: .\templates\core\base.html:86
+msgid "Types"
+msgstr "Tipos"
+
+#: .\templates\core\base.html:90
+msgid "Company"
+msgstr "Empresa"
+
+#: .\templates\core\base.html:92 .\templates\core\employee_list.html:5
 msgid "Employees"
 msgstr "Empleados"
+
+#: .\templates\core\base.html:93
+#, fuzzy
+msgid "Add employee"
+msgstr "Añadir Empleado"
+
+#: .\templates\core\base.html:100
+msgid "Search"
+msgstr "Buscar"
+
+#: .\templates\core\base.html:108
+msgid "Profile"
+msgstr "Perfil"
+
+#: .\templates\core\base.html:109
+msgid "Change password"
+msgstr "Cambiar contraseña"
+
+#: .\templates\core\base.html:111
+msgid "Logout"
+msgstr "Cerrar sesión"
+
+#: .\templates\core\create_user.html:6 .\templates\core\login.html:15
+#: .\templates\core\login.html.py:16
+msgid "Username"
+msgstr "Usuario"
+
+#: .\templates\core\create_user.html:10 .\templates\core\login.html:20
+#: .\templates\core\login.html.py:21
+msgid "Password"
+msgstr "Contraseña"
+
+#: .\templates\core\create_user.html:17 .\templates\core\entity_form.html:14
+#: .\templates\core\login.html:27 .\templates\core\person_form.html:8
+#: .\templates\core\sale_form.html:13 .\templates\core\sale_pay.html:13
+#: .\templates\smecal\event_form.html:26 .\templates\smecal\event_pay.html:13
+msgid "Submit"
+msgstr "Enviar"
+
+#: .\templates\core\customer_confirm_delete.html:5
+#: .\templates\core\customer_detail.html:5
+#: .\templates\core\customer_form.html:5 .\templates\core\sale_detail.html:27
+#: .\templates\core\sale_list.html:13 .\templates\smecal\event_detail.html:27
+#: .\templates\smecal\event_list.html:15
+msgid "Customer"
+msgstr "Cliente"
+
+#: .\templates\core\customer_form.html:5 .\templates\core\employee_form.html:5
+#: .\templates\smecal\event_form.html:5
+msgid "Add/Edit"
+msgstr "Añadir/Editar"
+
+#: .\templates\core\employee_confirm_delete.html:5
+#: .\templates\core\employee_detail.html:5
+#: .\templates\core\employee_form.html:5
+#, fuzzy
+msgid "Employee"
+msgstr "Empleado"
+
+#: .\templates\core\entity_list.html:7 .\templates\core\person_detail.html:22
+#: .\templates\core\person_list.html:7
+msgid "Name"
+msgstr "Nombre"
+
+#: .\templates\core\entity_list.html:8 .\templates\smecal\event_list.html:16
+#: .\templates\smecal\event_list.html:75
+msgid "Price"
+msgstr "Precio"
+
+#: .\templates\core\entity_list.html:25 .\templates\core\person_list.html:23
+#: .\templates\core\sale_list.html:40 .\templates\smecal\event_list.html:45
+msgid "previous"
+msgstr "anterior"
+
+#: .\templates\core\entity_list.html:29 .\templates\core\person_list.html:27
+#: .\templates\core\sale_list.html:44 .\templates\smecal\event_list.html:49
+msgid "Page"
+msgstr "Página"
+
+#: .\templates\core\entity_list.html:29 .\templates\core\person_list.html:27
+#: .\templates\core\sale_list.html:44 .\templates\smecal\event_list.html:49
+msgid "of"
+msgstr "de"
+
+#: .\templates\core\entity_list.html:33 .\templates\core\person_list.html:31
+#: .\templates\core\sale_list.html:48 .\templates\smecal\event_list.html:53
+msgid "next"
+msgstr "siguiente"
+
+#: .\templates\core\person_confirm_delete.html:5
+#: .\templates\smecal\event_confirm_delete.html:5
+msgid "Delete"
+msgstr "Eliminar"
+
+#: .\templates\core\sale_detail.html:5 .\templates\smecal\event_detail.html:5
+msgid "Detail"
+msgstr "Detalle"
+
+#: .\templates\core\sale_detail.html:29 .\templates\core\sale_list.html:14
+msgid "Amount"
+msgstr "Cantidad"
+
+#: .\templates\core\sale_detail.html:31
+msgid "Entities"
+msgstr "Entidades"
+
+#: .\templates\core\sale_list.html:15 .\templates\smecal\event_detail.html:29
+#: .\templates\smecal\event_list.html:14
+msgid "Date"
+msgstr "Fecha"
+
+#: .\templates\core\sale_list.html:57
+msgid "Total:"
+msgstr "Total:"
+
+#: .\templates\core\sale_pay.html:5 .\templates\smecal\event_list.html:80
+#: .\templates\smecal\event_list.html:84 .\templates\smecal\event_pay.html:5
+msgid "Pay"
+msgstr "Pagar"
+
+#: .\templates\smecal\event_confirm_delete.html:5
+#: .\templates\smecal\event_detail.html:5 .\templates\smecal\event_form.html:5
+msgid "Event"
+msgstr "Evento"
+
+#: .\templates\smecal\event_detail.html:31
+#, fuzzy
+msgid "Sale"
+msgstr "Venta"
+
+#: .\templates\smecal\event_list.html:6 .\templates\smecal\event_list.html:59
+#: .\templates\smecal\event_pay.html:5
+msgid "Events"
+msgstr "Eventos"
+
+#: .\templates\smecal\event_list.html:13
+msgid "#"
+msgstr "#"
+
+#: .\templates\smecal\event_list.html:59 .\templates\smecal\event_list.html:65
+msgid "Timeline"
+msgstr "Línea del tiempo"
+
+#: .\templates\smecal\event_list.html:87
+msgid "Details"
+msgstr "Detalles"
+
+#: .\templates\smecal\event_list.html:88
+msgid "Edit"
+msgstr "Editar"
