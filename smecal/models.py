@@ -1,8 +1,7 @@
 from django.db import models
 from django import forms
-from core.models import Entity, Customer, Employee
+from core.models import Entity, Customer, Employee, EntityForm
 from django.utils.translation import ugettext_lazy as _
-from multitenant.forms import TenantModelForm
 
 STATUS = (
         ('P', _("Paid")),
@@ -17,12 +16,13 @@ class Event(Entity):
     customer = models.ForeignKey(Customer)
     employee = models.ForeignKey(Employee, blank=True, null=True)
 
-class EventForm(TenantModelForm):
+class EventForm(EntityForm):
     class Meta:
         model = Event
-        exclude = ['tenant', 'name']
+        exclude = ['tenant', 'name', 'status']
         
     def __init__(self, *args, **kwargs):
         super(EventForm, self).__init__(*args, **kwargs)
     
-    when = forms.DateTimeField(widget=forms.DateTimeInput(attrs={'class': 'form-control', 'placeholder':_('Enter DateTime')}))  
+    when = forms.DateTimeField(widget=forms.DateTimeInput(attrs={'class': 'form-control', 'placeholder':_('Enter DateTime')}))
+    duration = forms.TimeField(widget=forms.TimeInput(attrs={'class': 'form-control', 'placeholder':_('Enter Duration')}))  

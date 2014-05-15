@@ -28,7 +28,13 @@
   			<dd><a href="/customers/{{ object.customer.id }}">{{ object.customer }}</a></dd>
   			<dt>{% trans "Date" %}</dt>
   			<dd>{{ object.when }}</dd>
-  			<dt>{% trans "Amount" %}</dt>
-  			<dd><a href="/sales/{{ sale.id }}">{{ sale }}</a></dd>
+  			<dt>{% trans "Sale" %}</dt>
+  			<dd>
+  				{% if sale %}
+  				<a href="/sales/{{ sale.id }}">{{ sale }}</a>
+  				{% else %}
+  				<a href="/events/{{ object.id }}/pay">{% trans "Unpaid" %}</a>
+  				{% endif %}
+  			</dd>
 		</dl>
 {% endblock %}  

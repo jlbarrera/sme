@@ -62,7 +62,7 @@
 			<div class="col-md-8 col-sm-12 top-margin" >
 				<ul class="timeline">
 				    <li class="time-label">
-				        <span class="bg-orange">{% trans "Start" %}</span>
+				        <span class="bg-orange">{% trans "Timeline" %}</span>
 				    </li>
 				    {% for entity in object_list %}
 				    <li>
@@ -71,7 +71,7 @@
 							<span class="time"><i class="fa fa-clock-o"></i>{{ entity.when | naturalday}}</span>
                             <h3 class="timeline-header"><a href="/customers/{{ entity.customer.id }}">{{entity.customer }}</a>
                             <div class="timeline-body">
-                            	<p class="text-info">{% trans "Description" %}</p>
+                            	<p class="text-info">{{ entity.description }}</p>
 						  		<p class="text-info">{% trans "Price" %}: {{ entity.price }}</p>
                             </div>
                             <div class="btn-group timeline-footer">

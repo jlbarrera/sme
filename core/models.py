@@ -1,4 +1,5 @@
 from django.db import models
+from django import forms
 from django.contrib.auth.models import User, Group
 from multitenant.models import TenantModel
 from django.utils.translation import ugettext_lazy as _
@@ -64,7 +65,10 @@ class EntityForm(TenantModelForm):
         exclude = ['tenant']
         
     def __init__(self, *args, **kwargs):
-        super(EntityForm, self).__init__(*args, **kwargs)    
+        super(EntityForm, self).__init__(*args, **kwargs)
+    
+    description = forms.CharField(widget=forms.Textarea(attrs={'class': 'form-control', 'placeholder':_('Enter Description')}))  
+    price = forms.IntegerField(widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder':_('Enter Price')}))
     
 class CashFlow(TenantModel):
     amount = models.IntegerField()

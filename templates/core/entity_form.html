@@ -1,16 +1,16 @@
 {% extends "core/base.html" %}
 {% load i18n %}
-{% block content %}	
+{% block content %}
+{{ form.when.errors }}	
 	<form action="" method="post" role="form">{% csrf_token %}
 		{% for object in form %}
 		<div class="form-group">
 			<label for="{{object.label}}">{{object.label}}</label>
 			<div class='input-group date' id='{{object.label}}'>
-		 		{{ object }}
-		 		<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
+		 		{{ object }}		 		
 	 		</div>	    	
 	    </div>
 	    {% endfor %}	
 	    <button type="submit" class="btn btn-default">{% trans "Submit" %}</button>
 	</form>
-{% endblock %} 
+{% endblock %}

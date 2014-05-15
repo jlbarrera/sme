@@ -16,7 +16,7 @@ class CustomerDetail(DetailView):
     
 class CustomerCreate(CreateView):
     model = Customer
-    fields = ['name', 'email']
+    fields = ['name', 'surname', 'email']
     success_url = reverse_lazy('customers-list')
     
     def form_valid(self, form):
@@ -24,7 +24,7 @@ class CustomerCreate(CreateView):
         return super(CustomerCreate, self).form_valid(form)
 
 class CustomerUpdate(UpdateView):    
-    fields = ['name', 'email']
+    fields = ['name', 'surname', 'email']
     success_url = reverse_lazy('customers-list')
     
     def get_queryset(self):

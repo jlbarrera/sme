@@ -1,3 +1,7 @@
 $(document).ready(function() {
-	$('#When').datetimepicker();
+	
+	$('#When').datetimepicker({
+		useSeconds: false,
+		format: 'dd/MM/yyyy hh:mm',
+	});
 })
