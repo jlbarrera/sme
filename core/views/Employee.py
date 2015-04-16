@@ -21,15 +21,7 @@ class EmployeeCreate(CreateView):
     fields = ['name']    
     
     def form_valid(self, form):
-        form.instance.user = self.request.user
-        user = User.objects.filter(username=form.instance.name)
-        if not user:        
-            user = User(username=form.instance.name, password="123456")
-            user.save()        
-        tenant = Tenant(name=form.instance.name)
-        tenant.save()
-        employee = Employee(name=form.instance.name, user=user, tenant=tenant)
-        employee.save()                
+        #TO-DO
         return HttpResponseRedirect(reverse_lazy('employees-list'))
 
 class EmployeeUpdate(UpdateView):    
